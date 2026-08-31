@@ -49,11 +49,19 @@ export const project = defineType({
       ],
     }),
     defineField({
-      name: 'video',
-      title: 'Video',
-      type: 'file',
+      name: 'videos',
+      title: 'Videos',
+      type: 'array',
       description: 'Short clips/previews only — not for full production video.',
-      options: {accept: 'video/*'},
+      of: [
+        defineArrayMember({
+          type: 'file',
+          name: 'video',
+          title: 'Video',
+          options: {accept: 'video/*'},
+          fields: [defineField({name: 'caption', type: 'string'})],
+        }),
+      ],
     }),
     defineField({name: 'publishedAt', type: 'datetime'}),
   ],
