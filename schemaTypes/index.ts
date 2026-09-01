@@ -1,3 +1,4 @@
+import {pick} from './pick'
 import {project} from './project'
 
-export const schemaTypes = [project]
+export const schemaTypes = [project, pick]
