@@ -23,7 +23,6 @@ export const project = defineType({
         list: [
           {title: 'Residential', value: 'residential'},
           {title: 'Commercial', value: 'commercial'},
-          {title: 'Academic', value: 'academic'},
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -33,6 +32,13 @@ export const project = defineType({
     defineField({name: 'architect', type: 'string'}),
     defineField({name: 'designer', type: 'string'}),
     defineField({name: 'coverImage', type: 'image', options: {hotspot: true}}),
+    defineField({
+      name: 'picks',
+      title: 'Associated Picks',
+      type: 'array',
+      of: [defineArrayMember({type: 'reference', to: [{type: 'pick'}]})],
+      validation: (Rule) => Rule.unique(),
+    }),
     defineField({
       name: 'gallery',
       type: 'array',
